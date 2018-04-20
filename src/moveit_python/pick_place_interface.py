@@ -82,7 +82,8 @@ class PickPlaceInterface(object):
                           "planner_id",
                           "planning_scene_diff",
                           "planning_time",
-                          "support_name")
+                          "support_name",
+                          "path_constraints")
         for arg in kwargs.keys():
             if not arg in supported_args:
                 rospy.loginfo("pickup: unsupported argument: %s", arg)
@@ -123,6 +124,10 @@ class PickPlaceInterface(object):
         # 8. Fill in minimize_object_distance
 
         # 9. Fill in path_constraints
+        try:
+            g.path_constraints = kwargs["path_constraints"]
+        except KeyError:
+            pass
 
         # 10. Fill in planner id
         try:
@@ -174,7 +179,8 @@ class PickPlaceInterface(object):
                           "planner_id",
                           "planning_scene_diff",
                           "planning_time",
-                          "support_name")
+                          "support_name",
+                          "path_constraints")
         for arg in kwargs.keys():
             if not arg in supported_args:
                 rospy.loginfo("place: unsupported argument: %s", arg)
@@ -210,6 +216,10 @@ class PickPlaceInterface(object):
             g.allow_gripper_support_collision = True
 
         # 8. Fill in path_constraints
+        try:
+            g.path_constraints = kwargs["path_constraints"]
+        except KeyError:
+            pass
 
         # 9. Fill in planner id
         try:
