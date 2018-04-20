@@ -126,7 +126,7 @@ class PickPlaceInterface(object):
         try:
             g.path_constraints = kwargs["path_constraints"]
         except KeyError:
-            g.path_constraints = None
+            pass
 
         # 10. Fill in planner id
         try:
@@ -217,7 +217,7 @@ class PickPlaceInterface(object):
         try:
             g.path_constraints = kwargs["path_constraints"]
         except KeyError:
-            g.path_constraints = None
+            pass
 
         # 9. Fill in planner id
         try:
