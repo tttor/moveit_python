@@ -123,6 +123,10 @@ class PickPlaceInterface(object):
         # 8. Fill in minimize_object_distance
 
         # 9. Fill in path_constraints
+        try:
+            g.path_constraints = kwargs["path_constraints"]
+        except KeyError:
+            g.path_constraints = None
 
         # 10. Fill in planner id
         try:
@@ -210,6 +214,10 @@ class PickPlaceInterface(object):
             g.allow_gripper_support_collision = True
 
         # 8. Fill in path_constraints
+        try:
+            g.path_constraints = kwargs["path_constraints"]
+        except KeyError:
+            g.path_constraints = None
 
         # 9. Fill in planner id
         try:
